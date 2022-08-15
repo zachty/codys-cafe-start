@@ -27,6 +27,7 @@ const Pug = db.define(
 
 //model methods
 //TODO: find out why this is returning undefined
+//default value in coffee array was undefined so the include in the hook was throwing an error
 Pug.findByCoffee = function (coffee) {
     return Pug.findAll({
         include: {
@@ -45,7 +46,7 @@ Pug.prototype.isPuppy = function () {
 };
 
 Pug.prototype.shortBio = function () {
-    //match all alphanumeric letters and spaces from beggining of input until first non-alphanumeric character
+    //match all alphanumeric letters and spaces from beginning of input until first non-alphanumeric character
     return this.biography.match(/^[\w\s]+(?=\W)/)[0];
     //return this.biography.slice(0, this.biography.search(/[^\w\s]/));
 };
